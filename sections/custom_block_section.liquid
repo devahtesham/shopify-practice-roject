@@ -1,0 +1,124 @@
+<div class="container-fluid">
+  <div class="main-container">
+    <div class="col-6">
+      {% for block in section.blocks %}
+        {% if block.type == "left-section" %}
+          <div class="box">
+            <img
+              src="{{ block.settings.image_id | img_url: 'master' }}"
+              alt=""
+              width="300"
+              height="300"
+              loading="lazy">
+
+            <div class="component-align-{{ block.settings.align }}">
+              <h4>{{ block.settings.content_title }}</h4>
+              <p>{{ block.settings.content_desc }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="col-6">
+      {% for block in section.blocks %}
+        {% if block.type == "right-section" %}
+          <div class="box">
+            <img
+              src="{{ block.settings.image_id_right | img_url: 'master' }}"
+              alt=""
+              width="300"
+              height="300"
+              loading="lazy">
+
+            <div class="component-align-{{ block.settings.align }}">
+              <h4>{{ block.settings.content_title_right }}</h4>
+              <p>{{ block.settings.content_desc_right }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+
+
+  </div>
+
+</div>
+
+<div class="custom-block">
+  <div class="custom-block__box-small">
+    <div class="custom-block__abc-class custom-block__abc-class"></div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Multiple Block Section",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "left-section",
+        "name": "left-section",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_id",
+            "label": "Select Image"
+          }, {
+            "type": "text",
+            "id": "content_title",
+            "label": "content title"
+          }, {
+            "type": "textarea",
+            "id": "content_desc",
+            "label": "Description"
+          }
+        ]
+      }, {
+        "type": "right-section",
+        "name": "right-section",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_id_right",
+            "label": "Select Image"
+          }, {
+            "type": "text",
+            "id": "content_title_right",
+            "label": "content title"
+          }, {
+            "type": "textarea",
+            "id": "content_desc_right",
+            "label": "Description"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Multiple Block Section"
+      }
+    ]
+  }
+{% endschema %}
+{% style %}
+  .col-6 {
+    width: 50%
+  }
+  .box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+  }
+  .image {
+    margin-right: 10px
+  }
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start
+  }
+
+  .custom-block .custom-block__box-small
+{% endstyle %}

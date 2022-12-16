@@ -1,0 +1,45 @@
+<div class="full-page-width" style="background-color: aqua;text-align:center">
+  <h1>
+    {{ section.settings.my_unique_id }}
+  </h1>
+  <h2>
+    {{ section.settings.my_unique_id2 }}
+  </h2>
+  <div>
+    <img
+      src="{{ section.settings.my_unique_id3 | img_url: 'master' }}"
+      alt=""
+      width=500
+      height=500
+      loading="lazy">
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "My Section",
+    "settings": [
+      {
+        "id": "my_unique_id",
+        "label": "Heading",
+        "type": "text",
+        "default": "Heading"
+      }, {
+        "id": "my_unique_id2",
+        "label": "Title",
+        "type": "text",
+        "default": "title"
+      }, {
+        "id": "my_unique_id3",
+        "label": "Banner Image",
+        "type": "image_picker"
+      }
+    ],
+    "presets": [
+      {
+        "name": "My Section",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
