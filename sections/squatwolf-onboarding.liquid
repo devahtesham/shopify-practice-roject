@@ -1,45 +1,59 @@
-<div class="full-page-width" style="background-color: aqua;text-align:center">
-  <h1>
-    {{ section.settings.my_unique_id }}
-  </h1>
-  <h2>
-    {{ section.settings.my_unique_id2 }}
-  </h2>
-  <div>
-    <img
-      src="{{ section.settings.my_unique_id3 | img_url: 'master' }}"
-      alt=""
-      width=500
-      height=500
-      loading="lazy">
+<div class="container">
+  {% for block in section.blocks %}
+  <div class="prod prod-1 ">
+    <img src="{{ block.settings.prod_img_id | img_url: 'master'}}" alt="" width="" height="" loading="lazy">
+    <div>
+      <h5>{{ block.settings.prod_heading }}</h5>
+      <h5>{{ block.settings.prod_desc }}
+      </h5>
+      <h6>{{ block.settings.prod_status }}</h6>
+    </div>
   </div>
+  {% endfor %}
+
 </div>
+{{ 'my_slider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'my_slider.js' | asset_url }}" async></script>
+<script src="{{ 'custom.js' | asset_url }}" async></script>
+
 
 {% schema %}
-  {
-    "name": "My Section",
-    "settings": [
-      {
-        "id": "my_unique_id",
-        "label": "Heading",
-        "type": "text",
-        "default": "Heading"
-      }, {
-        "id": "my_unique_id2",
-        "label": "Title",
-        "type": "text",
-        "default": "title"
-      }, {
-        "id": "my_unique_id3",
-        "label": "Banner Image",
-        "type": "image_picker"
-      }
-    ],
-    "presets": [
-      {
-        "name": "My Section",
-        "category": "Custom"
-      }
-    ]
-  }
+{
+"name": "Slider Section",
+"settings":[],
+"blocks": [
+{
+"name": "Product",
+"type": "Product",
+"settings": [
+{
+"type": "image_picker",
+"id": "prod_img_id",
+"label": "Select Product Image"
+},
+{
+"type": "text",
+"id": "prod_heading",
+"label": "Product Name"
+},
+{
+"type": "text",
+"id": "prod_desc",
+"label": "Product Description"
+},
+{
+"type": "text",
+"id": "prod_status",
+"label": "Product Status"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Slider Section",
+"category": "Custom"
+}
+]
+}
 {% endschema %}
