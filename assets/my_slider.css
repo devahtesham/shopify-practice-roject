@@ -257,13 +257,13 @@
     z-index: 999;
   }
 .prod{
-  margin-left: 135px;
+  margin-left: 80px;
 }
 .prod:nth-of-type(1){
   margin-left: 150px;
 }
 .prod img{
-  width: 345px;
+  width: 288px;
   height: 360px;
 }
 /* media query */

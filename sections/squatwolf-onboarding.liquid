@@ -1,14 +1,18 @@
 <div class="container">
   {% for block in section.blocks %}
+
   <div class="prod prod-1 ">
-    <img src="{{ block.settings.prod_img_id | img_url: 'master'}}" alt="" width="" height="" loading="lazy">
-    <div>
-      <h5>{{ block.settings.prod_heading }}</h5>
-      <h5>{{ block.settings.prod_desc }}
-      </h5>
-      <h6>{{ block.settings.prod_status }}</h6>
-    </div>
+    <a href="{{ block.settings.url }}">
+      <img src="{{ block.settings.prod_img_id | img_url: 'master'}}" alt="" width="" height="" loading="lazy">
+      <div>
+        <h5>{{ block.settings.prod_heading }}</h5>
+        <h5>{{ block.settings.prod_desc }}
+        </h5>
+        <h6>{{ block.settings.prod_status }}</h6>
+      </div>
+    </a>
   </div>
+
   {% endfor %}
 
 </div>
@@ -23,28 +27,33 @@
 "settings":[],
 "blocks": [
 {
-"name": "Product",
-"type": "Product",
+"name": "Card",
+"type": "Card",
 "settings": [
 {
 "type": "image_picker",
 "id": "prod_img_id",
-"label": "Select Product Image"
+"label": "Select Card Image"
 },
 {
 "type": "text",
 "id": "prod_heading",
-"label": "Product Name"
+"label": "Name"
 },
 {
 "type": "text",
 "id": "prod_desc",
-"label": "Product Description"
+"label": "Description"
 },
 {
 "type": "text",
 "id": "prod_status",
-"label": "Product Status"
+"label": "Status"
+},
+{
+"type": "url",
+"id": "url",
+"label": "URL"
 }
 ]
 }

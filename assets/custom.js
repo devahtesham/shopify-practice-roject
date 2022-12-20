@@ -29,20 +29,20 @@ $(function () {
       },
     ],
   });
+  // function for checking slick arrow disability
+  const checkSlickDisability = (el) => {
+    if (el.className.includes("slick-disabled")) {
+      el.style.display = "none";
+    } else {
+      el.style.display = "block";
+    }
+  };
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".slick-arrow").forEach(function (el) {
-      if (el.className.includes("slick-disabled")) {
-        el.style.display = "none";
-      } else {
-        el.style.display = "block";
-      }
+      checkSlickDisability(el);
       el.addEventListener("click", (e) => {
         document.querySelectorAll(".slick-arrow").forEach(function (el) {
-          if (el.className.includes("slick-disabled")) {
-            el.style.display = "none";
-          } else {
-            el.style.display = "block";
-          }
+          checkSlickDisability(el);
         });
       });
     });
