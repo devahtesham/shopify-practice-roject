@@ -1,30 +1,29 @@
 <div class="container">
   {% for block in section.blocks %}
-
   <div class="prod prod-1 ">
     <a href="{{ block.settings.url }}">
-      <img src="{{ block.settings.prod_img_id | img_url: 'master'}}" alt="" width="" height="" loading="lazy">
+      <div class="img-container">
+        <img src="{{ block.settings.prod_img_id | image_url }}" alt="" width="" height="" loading="lazy">
+      </div>
       <div>
-        <h5>{{ block.settings.prod_heading }}</h5>
+        <h3>{{ block.settings.prod_heading }}</h3>
         <h5>{{ block.settings.prod_desc }}
         </h5>
         <h6>{{ block.settings.prod_status }}</h6>
       </div>
     </a>
   </div>
-
   {% endfor %}
-
 </div>
 {{ 'my_slider.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'my_slider.js' | asset_url }}" async></script>
-<script src="{{ 'custom.js' | asset_url }}" async></script>
-
-
+<script src="{{ 'my_slider.js' | asset_url }}" defer></script>
+<script src="{{ 'custom.js' | asset_url }}" defer></script>
 {% schema %}
 {
 "name": "Slider Section",
-"settings":[],
+"settings": [
+
+],
 "blocks": [
 {
 "name": "Card",
